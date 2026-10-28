@@ -1,0 +1,311 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Portal Berita Kampus</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #102a43, #2859d8);
+            padding: 20px;
+        }
+
+        .container {
+            width: 900px;
+            min-height: 500px;
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px #0003;
+        }
+
+        /* BAGIAN KIRI */
+        .kiri {
+            width: 50%;
+            background: linear-gradient(150deg, #102a43, #2859d8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .logo {
+            font-size: 70px;
+            color: #ffd43b;
+            margin-bottom: 25px;
+        }
+
+        .kiri h1 {
+            font-size: 28px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .kiri p {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #e0eaff;
+        }
+
+        .garis {
+            width: 60px;
+            height: 4px;
+            background: #ffd43b;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* BAGIAN KANAN */
+        .kanan {
+            width: 50%;
+            padding: 45px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .kanan h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #102a43;
+            font-size: 28px;
+        }
+
+        .deskripsi {
+            text-align: center;
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #2859d8;
+        }
+
+        .lupa {
+            text-align: right;
+            margin-top: -8px;
+            margin-bottom: 22px;
+        }
+
+        .lupa a {
+            text-decoration: none;
+            color: #2859d8;
+            font-size: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #2859d8;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #102a43;
+        }
+
+        .daftar {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .daftar a {
+            color: #2859d8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .kembali {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .kembali a {
+            color: #2859d8;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        /* TAMPILAN HP */
+        @media (max-width: 650px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .kiri, .kanan {
+                width: 100%;
+            }
+
+            .kiri {
+                min-height: 250px;
+            }
+
+            .kiri h1 {
+                font-size: 23px;
+            }
+
+            .logo {
+                font-size: 50px;
+                margin-bottom: 15px;
+            }
+
+            .kanan {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- BAGIAN IDENTITAS PORTAL -->
+        <div class="kiri">
+
+            <div class="logo">📰</div>
+
+            <div class="garis"></div>
+
+            <h1>Kabar Kampus</h1>
+
+            <p>
+                Portal Berita Kampus<br>
+                Informasi Akademik dan Mahasiswa<br>
+                Berita Terbaru, Inspirasi Tanpa Batas
+            </p>
+
+        </div>
+
+        <!-- BAGIAN FORM LOGIN -->
+        <div class="kanan">
+
+            <h2>Sign In</h2>
+
+            <p class="deskripsi">
+                Masuk untuk membaca berita kampus terbaru.
+            </p>
+
+            <form onsubmit="login(event)">
+
+                <label for="username">Username / NIM</label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Masukkan username atau NIM"
+                    required
+                >
+
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Masukkan password"
+                    required
+                >
+
+                <div class="lupa">
+                    <a href="#" onclick="lupaPassword(event)">
+                        Lupa Password?
+                    </a>
+                </div>
+
+                <button type="submit">Sign In →</button>
+
+            </form>
+
+            <p class="daftar">
+                Belum mempunyai akun?
+                <a href="#" onclick="daftarAkun(event)">Daftar di sini</a>
+            </p>
+
+            <div class="kembali">
+                <a href="index.html">← Kembali ke Beranda</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function login(event) {
+            event.preventDefault();
+
+            const username =
+                document.getElementById("username").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            if (username !== "" && password !== "") {
+                alert("Selamat datang di Portal Berita Kampus!");
+
+                // Arahkan ke halaman utama portal berita
+                window.location.href = "index.html";
+            }
+        }
+
+        function lupaPassword(event) {
+            event.preventDefault();
+
+            alert(
+                "Untuk bantuan password, silakan hubungi pengelola portal."
+            );
+        }
+
+        function daftarAkun(event) {
+            event.preventDefault();
+
+            alert(
+                "Fitur pendaftaran akun belum tersedia pada versi demo."
+            );
+        }
+    </script>
+
+</body>
+</html>
+```
